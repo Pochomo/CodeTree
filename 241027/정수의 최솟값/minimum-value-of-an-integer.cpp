@@ -12,17 +12,13 @@ int main() {
 }
 
 int small_value(int a, int b, int c){
-    int temp;
-    for(int i = 0; i < 3; i++){
-        if(a > b){
-            temp = b;
-        }
-        if(b > c){
-            temp = c;
-        }
-        if(c > a){
-            temp = a;
-        }
+    int temp = a;
+    if(temp > b){
+        temp = b;
     }
+    if(temp > c){
+        temp = c;
+    }
+    
     return temp;
 }
