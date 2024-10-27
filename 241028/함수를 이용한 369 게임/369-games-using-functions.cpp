@@ -11,9 +11,9 @@ bool IsMagicNumber(int n) {
 
 int main() {
     int cnt = 0;
-    long num1, num2;
+    int num1, num2;
     cin >> num1 >> num2;
-    for(long i = num2; i >= num1; i--){
+    for(int i = num2; i >= num1; i--){
         if(IsMagicNumber(i)){
             cnt++;
         }
