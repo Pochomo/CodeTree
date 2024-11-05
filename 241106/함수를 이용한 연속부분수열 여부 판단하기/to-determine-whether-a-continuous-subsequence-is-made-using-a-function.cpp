@@ -2,7 +2,7 @@
 using namespace std;
 
 bool check(int a[], int b[], int n1, int n2){
-    for(int i = 0; i < n1; i++){
+    for(int i = 0; i <= n1-n2; i++){
         for(int j = 0; j < n2; j++){
             if(b[j] == a[i]){
                 int n = i + 1;
