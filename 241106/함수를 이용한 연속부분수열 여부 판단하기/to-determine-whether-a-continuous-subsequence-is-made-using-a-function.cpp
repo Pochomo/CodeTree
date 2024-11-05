@@ -2,9 +2,8 @@
 using namespace std;
 
 bool check(int a[], int b[], int n1, int n2){
-    int j = 0;
     for(int i = 0; i < n1; i++){
-        for(j = 0; j < n2; j++){
+        for(int j = 0; j < n2; j++){
             if(b[j] == a[i]){
                 i++;
                 for(int z = j + 1; z < n2; z++){
