@@ -7,12 +7,10 @@ bool check(int a[], int b[], int n1, int n2){
             if(b[j] == a[i]){
                 int n = i + 1;
                 for(int z = j + 1; z < n2; z++){
-                    if(b[z] == a[n]){
-                        n++;
-                    }
-                    else{
+                    if(b[z] != a[n]){
                         return 0;
                     }
+                    n++;
                 }
                 return 1;
             }
@@ -20,6 +18,7 @@ bool check(int a[], int b[], int n1, int n2){
     }
     return 0;
 }
+
 
 int main() {
     int n1, n2, a, b;
