@@ -3,17 +3,15 @@ using namespace std;
 
 bool check(int a[], int b[], int n1, int n2){
     for(int i = 0; i <= n1-n2; i++){
-        for(int j = 0; j < n2; j++){
-            if(b[j] == a[i]){
-                int n = i + 1;
-                for(int z = j + 1; z < n2; z++){
-                    if(b[z] != a[n]){
-                        return 0;
-                    }
-                    n++;
+        if(b[0] == a[i]){
+            int n = i + 1;
+            for(int z = 1; z < n2; z++){
+                if(b[z] != a[n]){
+                    return 0;
                 }
-                return 1;
+                n++;
             }
+            return 1;
         }
     }
     return 0;
