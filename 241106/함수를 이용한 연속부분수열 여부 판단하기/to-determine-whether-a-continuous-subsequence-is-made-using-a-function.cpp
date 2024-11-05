@@ -5,10 +5,10 @@ bool check(int a[], int b[], int n1, int n2){
     for(int i = 0; i < n1; i++){
         for(int j = 0; j < n2; j++){
             if(b[j] == a[i]){
-                i++;
+                int n = i + 1;
                 for(int z = j + 1; z < n2; z++){
-                    if(b[z] == a[i]){
-                        i++;
+                    if(b[z] == a[n]){
+                        n++;
                     }
                     else{
                         return 0;
@@ -30,7 +30,7 @@ int main() {
         cin >> a;
         A[i] = a;
     }
-    for (int i = 0; i < n1; i ++){
+    for (int i = 0; i < n2; i ++){
         cin >> b;
         B[i] = b;
     }
