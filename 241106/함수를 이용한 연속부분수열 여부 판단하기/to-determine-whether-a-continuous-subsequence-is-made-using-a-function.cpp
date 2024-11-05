@@ -19,6 +19,7 @@ bool check(int a[], int b[], int n1, int n2){
             }
         }
     }
+    return 0;
 }
 
 int main() {
