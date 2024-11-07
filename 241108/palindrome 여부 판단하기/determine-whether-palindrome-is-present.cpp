@@ -3,7 +3,7 @@
 using namespace std;
 
 bool checkPalindrome(string & a){
-    string b = "";
+    string b;
     for(int i = (a.length()-1); i >= 0; i--){
         b += a[i];
     }
