@@ -40,9 +40,6 @@ int main() {
 
     cin >> code >> place >> time;
     C007 ac(code, place, time);
-    ac.setCode(code);
-    ac.setPlace(place);
-    ac.setTime(time);
 
     ac.printInfo();
     
