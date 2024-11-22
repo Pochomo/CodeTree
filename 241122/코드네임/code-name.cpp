@@ -26,10 +26,17 @@ int main() {
         CodeScoreArr[i] = CodeScore(cname, score);
     }
     int min1 = CodeScoreArr[0].score;
+
+    //index로 접근해서 최소 값 찾기
     for(int i = 1; i < 5; i++){
         sorting1(CodeScoreArr[i], min1);
     }
-
+    // int min_idx = 0;
+    // for(int i = 1; i < MAX_N; i++) {
+    //     if(users[min_idx].score > users[i].score)
+    //         min_idx = i;
+    // }
+    //index로 접근했으면 아래와 같은 for문 안 써도됨
     for(int i = 0; i < 5; i++){
         if(CodeScoreArr[i].score == min1){
             CodeScoreArr[i].printInfo();
