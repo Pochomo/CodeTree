@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
+#include <iomanip>
 
 using namespace std;
 
@@ -39,14 +40,14 @@ int main() {
     sort(Peoples, Peoples + 5, cmp1);
     cout << "name" << endl;
     for(int i = 0; i < 5; i++){
-        cout << Peoples[i].name << " " << Peoples[i].height << " " << Peoples[i].weight;
+        cout << fixed << setprecision(1) << Peoples[i].name << " " << Peoples[i].height << " " << Peoples[i].weight;
         cout << endl;
     }
     cout << endl;
     sort(Peoples, Peoples + 5, cmp2);
     cout << "height" << endl;
     for(int i = 0; i < 5; i++){
-        cout << Peoples[i].name << " " << Peoples[i].height << " " << Peoples[i].weight;
+        cout << fixed << setprecision(1) << Peoples[i].name << " " << Peoples[i].height << " " << Peoples[i].weight;
         cout << endl;
     }
 
