@@ -1,8 +1,8 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
-#include <iomanip>
-
+#include <iomanip> //소수점 첫째짜리 까지 표현하기 위해
+ 
 using namespace std;
 
 #define MAXN 1000
@@ -41,6 +41,7 @@ int main() {
     cout << "name" << endl;
     for(int i = 0; i < 5; i++){
         cout << fixed << setprecision(1) << Peoples[i].name << " " << Peoples[i].height << " " << Peoples[i].weight;
+        //소수점 첫째짜리 까지 표현하기 위해 fixed, setprecision(1) 사용
         cout << endl;
     }
     cout << endl;
