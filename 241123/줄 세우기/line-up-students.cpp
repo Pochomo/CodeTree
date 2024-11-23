@@ -32,6 +32,8 @@ int main() {
     int weight;
     cin >> n;
     People Peoples[n];
+
+    //name을 전역변수가 아닌 i 사용해서 해도됨
     for(int i = 0; i < n; i++){
         cin >> height >> weight;
         Peoples[i] = People(height, weight, name);
