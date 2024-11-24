@@ -22,6 +22,9 @@ class Point{
 };
 
 bool cmp(const Point & x1, const Point & x2){
+    if(x1.distance == x2.distance){
+        x1.num < x2.num;
+    }
     return x1.distance < x2.distance;
 }
 
@@ -30,7 +33,6 @@ int main() {
     int n;
     int x;
     int y;
-    int *distance;
     cin >> n;
     Point pointArr[n];
     for(int i = 0; i < n; i++){
