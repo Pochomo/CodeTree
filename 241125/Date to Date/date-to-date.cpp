@@ -7,6 +7,9 @@ int main() {
     int num_of_days[13] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     int time = 0;
 
+    if(m1 == m2 && d1 == d2){
+        time++;
+    }
     while(true){
         if(m1 == m2 && d1 == d2){
             break;
