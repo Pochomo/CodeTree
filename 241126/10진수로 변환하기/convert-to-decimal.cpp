@@ -35,7 +35,7 @@ int main() {
 //     int num = 0;
 //     for(int i = 0; i < (int) binary.size(); i++)
 //         num = num * 2 + (binary[i] - '0'); //'0' 하는 이유는 char를 숫자로 변경할때
-//      '0;(1)을 뺴줘야함
+//      '0'을 뺴줘야함
     
 //     // 출력
 //     cout << num;
