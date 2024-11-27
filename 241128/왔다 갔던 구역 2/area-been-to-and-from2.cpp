@@ -1,72 +1,53 @@
 #include <iostream>
-#include <string>
-#include <algorithm>
+
+#define MAX_N 100
+#define MAX_R 2000
+#define OFFSET 1000
 
 using namespace std;
 
-int inputN[100] = {0};
-char inputL[100];
-int result[2000] = {0};
-int MAXN = 2000;
+int n;
+int x1[MAX_N], x2[MAX_N];
+
+int checked[MAX_R + 1];
 
 int main() {
-    int n;
-    char x;
-    int x1;
-    int OFFSET = 1000;
+    
     cin >> n;
-    inputN[0] = 1000;
-
-    for(int i = 1; i <= n; i++){
-        cin >> x1 >> x;
-        inputN[i] = x1 + OFFSET;
-        inputL[i-1] = x;
+    
+	int cur = 0;
+	
+    for(int i = 0; i < n; i++) {
+		int distance;
+		char direction;
+        cin >> distance >> direction;
+		
+		if(direction == 'L') {
+			x1[i] = cur - distance;
+			x2[i] = cur;
+			cur -= distance;
+		}
+		else {
+			
+			x1[i] = cur;
+			x2[i] = cur + distance;
+			cur += distance;
+		}
+        
+        x1[i] += OFFSET;
+        x2[i] += OFFSET;
     }
+    
 
-    int num = 1;
-    while(n != 0){
-        if(inputL[num-1] == 'R'){
-            if(inputN[num-1] > inputN[num]){
-                for(int i = inputN[num-1]; i > inputN[num]; i--){
-                result[OFFSET]++;
-                OFFSET++;
-                }
-                OFFSET++;
-            }
-            else if(inputN[num-1] < inputN[num]){
-                for(int i = inputN[num]; i > inputN[num-1]; i--){
-                    result[OFFSET]++;
-                    OFFSET++;
-                }
-                OFFSET++;
-            }
-        }
-        if(inputL[num-1] == 'L'){
-            if(inputN[num-1] > inputN[num]){
-                for(int i = inputN[num-1]; i > inputN[num]; i--){
-                    result[OFFSET]++;
-                    OFFSET--;
-                }
-            }
-            else if(inputN[num-1] < inputN[num]){
-                for(int i = inputN[num]; i > inputN[num-1]; i--){
-                    result[OFFSET]++;
-                    OFFSET--;
-                }
-            }
-        }
-        num++;
-        n--;
-    }
-
+    for(int i = 0; i < n; i++)
+        for(int j = x1[i]; j < x2[i]; j++)
+            checked[j]++;
+    
     int cnt = 0;
-    for(int i = 0; i < MAXN; i++){
-        if(result[i] > 1){
+    for(int i = 0; i <= MAX_R; i++)
+        if(checked[i] >= 2)
             cnt++;
-        }
-    }
-
+    
     cout << cnt;
-
     return 0;
 }
