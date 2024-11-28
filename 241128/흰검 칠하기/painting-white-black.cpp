@@ -27,6 +27,29 @@ int main() {
     cin >> n;
     int cur = 0; //현재 위치
     // 1 L 1 L 이면 위치 이동 x 색만 변하게함 (0 , -1], [0, 1)
+    //난 이런 반복문을 생각했지만(로직) 답지에서는 while문 사용했음
+    // ex 
+    // for(int i = 1; i <= n; i++) {
+    //     int x;
+    //     char c;
+    //     cin >> x >> c;
+    //     if(c == 'L') {
+    //         // x칸 왼쪽으로 칠합니다.
+    //         while(x--) {
+    //             a[cur] = 1;
+    //             cnt_w[cur]++;
+    //             if(x) cur--; //x가 0보다 커야 실행되기 때문에 내가 밑에 적은 조건이 수립한다.
+    //         }
+    //     }
+    //     else {
+    //         // x칸 오른쪽으로 칠합니다.
+    //         while(x--) {
+    //             a[cur] = 2;
+    //             cnt_b[cur]++;
+    //             if(x) cur++;
+    //         }
+    //     }
+    // }
     for(int i = 0; i < n; i++){
         cin >> x >> direction;
         dire[i] = direction;
