@@ -9,6 +9,7 @@ int y2A[2] = {0};
 int result1[4000][4000] = {0};
 //직사각형 하나 2로 나머지 하나 1로 함 그리고 만약 2를 수정할때는 3으로 바꾸고
 //좌표로 계산 min, max 값 받아서 각각 x1, x2 처럼 계산
+
 int main() {
     int OFFSET = 1000;
     int x1, x2, y1, y2;
@@ -41,9 +42,9 @@ int main() {
         }
 
     int minx = x1A[0];
-    int maxx = x2A[0];
+    int maxx = x1A[0];
     int miny = y1A[0];
-    int maxy = y2A[0];
+    int maxy = y1A[0];
     for(int i = 0; i < 4000; i++){
         for(int j = 0; j < 4000; j++){
             if(result1[i][j] == 1){
@@ -56,19 +57,27 @@ int main() {
                 if(miny > j){
                     miny = j;
                 }
-                if(maxy < i){
+                if(maxy < j){
                     maxy = j;
                 }
             }
         }
     }
- 
+
     int cnt = 0;
-    for(int i = minx; i < maxx; i++){
-        for(int j = miny; j < maxy; j++){
+    bool nsame = true;
+    if(minx == maxx && miny == maxy){
+        nsame = false;
+    }
+
+    if(nsame){
+    for(int i = minx; i <= maxx; i++){
+        for(int j = miny; j <= maxy; j++){
             cnt++;
         }
     }
+    }
+
     cout << cnt;
     return 0;
 }
