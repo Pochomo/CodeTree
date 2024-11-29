@@ -6,9 +6,8 @@ int x2A[2] = {0};
 int y1A[2] = {0};
 int y2A[2] = {0};
 
-int result1[4000][4000] = {0};
-//직사각형 하나 2로 나머지 하나 1로 함 그리고 만약 2를 수정할때는 3으로 바꾸고
-//좌표로 계산 min, max 값 받아서 각각 x1, x2 처럼 계산
+int result1[2000][2000] = {0};
+
 
 int main() {
     int OFFSET = 1000;
@@ -46,8 +45,8 @@ int main() {
     int miny;
     int maxy;
     int cnt = 0;
-    for(int i = 0; i < 4000; i++){
-        for(int j = 0; j < 4000; j++){
+    for(int i = 0; i < 2000; i++){
+        for(int j = 0; j < 2000; j++){
             if(result1[i][j] == 1){
                 if(cnt == 0){
                     minx = i;
