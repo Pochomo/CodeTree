@@ -41,13 +41,21 @@ int main() {
             }
         }
 
-    int minx = x1A[0];
-    int maxx = x1A[0];
-    int miny = y1A[0];
-    int maxy = y1A[0];
+    int minx;
+    int maxx;
+    int miny;
+    int maxy;
+    int cnt = 0;
     for(int i = 0; i < 4000; i++){
         for(int j = 0; j < 4000; j++){
             if(result1[i][j] == 1){
+                if(cnt == 0){
+                    minx = i;
+                    miny = j;
+                    maxx = i;
+                    maxy = j;
+                    cnt++;
+                }
                 if(minx > i){
                     minx = i;
                 }
@@ -64,18 +72,18 @@ int main() {
         }
     }
 
-    int cnt = 0;
+    cnt = 0;
     bool nsame = true;
     if(minx == maxx && miny == maxy){
         nsame = false;
     }
 
     if(nsame){
-    for(int i = minx; i <= maxx; i++){
-        for(int j = miny; j <= maxy; j++){
-            cnt++;
+        for(int i = minx; i <= maxx; i++){
+            for(int j = miny; j <= maxy; j++){
+                cnt++;
+            }
         }
-    }
     }
 
     cout << cnt;
