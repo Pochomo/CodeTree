@@ -40,10 +40,10 @@ int main() {
             }
         }
 
-    int minx;
-    int maxx;
-    int miny;
-    int maxy;
+    int minx = 0;
+    int maxx = 0;
+    int miny = 0;
+    int maxy = 0;
     int cnt = 0;
     for(int i = 0; i < 2000; i++){
         for(int j = 0; j < 2000; j++){
@@ -72,9 +72,9 @@ int main() {
     }
 
     cnt = 0;
-    bool nsame = true;
-    if(minx == maxx && miny == maxy){
-        nsame = false;
+    bool nsame = false;
+    if(minx != maxx || miny != maxy){
+        nsame = true;
     }
 
     if(nsame){
