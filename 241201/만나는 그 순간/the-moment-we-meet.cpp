@@ -3,12 +3,12 @@
 
 using namespace std;
 
-int arrA[1000];
-int arrB[1000];
+int arrA[1000] = {0};
+int arrB[1000] = {0};
 
 
 void cheack(int max_location){
-    for(int i = 0; i < max_location; i++){
+    for(int i = 1; i <= max_location; i++){
         if(arrA[i] == arrB[i]){
             cout << i;
             return;
@@ -24,19 +24,24 @@ int main(){
     cin >> n >> m; // n은 A m은 B
     int cnt = 0;
     int location = 0;
-
-    int final_location;
+    arrA[0] = 0;
+    arrB[0] = 0;
+    int indexA = 1;
+    int indexB = 1;
+    int final_location = 0;
     for(int i = 0; i < n; i++){
         cin >> d >> t;
         if(d == 'R'){
-            for(int j = 0; j < t; j++){
-                arrA[j] = ++location;
+            for(int j = 1; j <= t; j++){
+                location++;
+                arrA[indexA++] = location;
                 final_location++;
             }
         }
         else if(d == 'L'){
-            for(int j = 0; j < t; j++){
-                arrA[j] = --location;
+            for(int j = 1; j <= t; j++){
+                location--;
+                arrA[indexA++] = location;
                 final_location++;
             }
         }
@@ -48,20 +53,22 @@ int main(){
     for(int i = 0; i < m; i++){
         cin >> d >> t;
         if(d == 'R'){
-            for(int j = 0; j < t; j++){
-                arrB[j] = ++location;
+            for(int j = 1; j <= t; j++){
+                location++;
+                arrB[indexB++] = location;
                 final_location++;
             }
         }
         else if(d == 'L'){
-            for(int j = 0; j < t; j++){
-                arrB[j] = --location;
+            for(int j = 1; j <= t; j++){
+                location--;
+                arrB[indexB++] = location;
                 final_location++;
             }
         }
     }
 
-    max_location = max(max_location, final_location);
+    max_location = min(max_location, final_location);
 
     cheack(max_location);
 
