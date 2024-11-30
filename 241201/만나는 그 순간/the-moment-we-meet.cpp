@@ -3,8 +3,8 @@
 
 using namespace std;
 
-int arrA[1000] = {0};
-int arrB[1000] = {0};
+int arrA[1001] = {0};
+int arrB[1001] = {0};
 
 
 void cheack(int max_location){
