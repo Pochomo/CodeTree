@@ -8,17 +8,9 @@ void check(int full_time){
     int cnt = 0;
     int index = 0;
     for(int i = 1; i <= full_time; i++){
-        if(arrA[i] > arrB[i]){
-            index = i;
-            if(arrB[++index] > arrA[++index]){
-                cnt++;
-            }
-        }
-        else if(arrA[i] < arrB[i]){
-            index = i;
-            if(arrB[++index] < arrA[++index]){
-                cnt++;
-            }
+        if((arrA[i] >= arrB[i] && arrA[i+1] < arrB[i+1]) ||
+           (arrA[i] <= arrB[i] && arrA[i+1] > arrB[i+1])) {
+            cnt++;
         }
     }  
 
