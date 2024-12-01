@@ -6,14 +6,17 @@ int arrB[2000000] = {0};
 
 void check(int full_time){
     int cnt = 0;
+    int index = 0;
     for(int i = 1; i <= full_time; i++){
         if(arrA[i] >= arrB[i]){
-            if(arrB[++i] >= arrA[++i]){
+            index = i;
+            if(arrB[++index] > arrA[++index]){
                 cnt++;
             }
         }
         else if(arrA[i] <= arrB[i]){
-            if(arrB[++i] <= arrA[++i]){
+            index = i;
+            if(arrB[++index] < arrA[++index]){
                 cnt++;
             }
         }
@@ -49,6 +52,7 @@ int main() {
             index++;
         }
     }
+    
 
     check(full_time);
 
