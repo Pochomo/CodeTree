@@ -10,9 +10,6 @@ void check(int full_time) {
 
     if(arrA[1] > arrB[1]){ prevLeader = 1; }
     else if(arrA[1] < arrB[1]) { prevLeader = 2; }
-    else{
-        prevLeader = 0;
-    }
 
     for(int i = 2; i <= full_time; i++) {
         int currentLeader = 0;
@@ -23,8 +20,7 @@ void check(int full_time) {
         else if(arrA[i] < arrB[i]){
             currentLeader = 2;
         }
-        if(prevLeader != currentLeader && 
-           currentLeader != 0) {
+        if(prevLeader != currentLeader && prevLeader != 0) {
             cnt++;
         }
 
