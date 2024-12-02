@@ -2,26 +2,21 @@
 #include <algorithm>
 using namespace std;
 
-int arrA[1000000];
-int arrB[1000000];
+int arrA[1000001];
+int arrB[1000001];
 
 void check(int full_time) {
     // 10 11에 겹치는 경우, 13일때 a는 0(이전위치가)이고 b는 3임
     int cnt = 0;
-    int double_check = 1; //연속으로 겹치는 경우 차단
+    
     for(int i = 1; i <= full_time; i++) {
-        if(arrA[i] == arrB[i] && double_check != 2){
-            double_check = 2;
-            cnt ++;
-        }
-        else if(arrA[i] != arrB[i]){
-            double_check = 1;
+        if(arrA[i] == arrB[i] && arrA[i-1] != arrB[i-1]){
+            cnt++;
         }
     }
 
     cout << cnt;
 }
-
 
 
 int main() {
@@ -50,7 +45,7 @@ int main() {
             }
         }
     }
-    for(int i = full_time; i < 1000000; i++){
+    for(int i = full_time; i <= 1000000; i++){
         arrA[i] = arrA[full_time];
     }
     index = 1;
@@ -78,7 +73,7 @@ int main() {
         }
     }
 
-    for(int i = full_time; i < 1000000; i++){
+    for(int i = full_time; i <= 1000000; i++){
         arrB[i] = arrB[full_time];
     }
 
