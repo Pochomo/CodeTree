@@ -16,6 +16,7 @@ int main() {
     for(int i = 1 ; i <= n; i++){
         arrPeoPle[i] = 0;
     }
+
     arrPeoPle[p] = 1;
 
     int *time_arr = new int[T+1];
@@ -25,7 +26,7 @@ int main() {
  
     int cnt = 1; //k번동안 감염됐는지 체크
     for(int i = 1; i <= T; i++){
-        cin >> t >> x >> y; //t초에 x개발자와 y개발자가 악수를 나눴음. //k 번동안 감염됨을 유의 ??
+        cin >> t >> x >> y; //t초에 x개발자와 y개발자가 악수를 나눴음.
         temp_time_arr[i] = t;
         time_arr[i] = t;
         arrX[i] = x;
@@ -39,17 +40,28 @@ int main() {
         while(temp_time_arr[i] != time_arr[index]){ //index가 몇인지 알아내서 time 제일 먼저인거 찾아옴
             ++index;
         }
-        
         //index 맞게 출력되는거 확인
         if(arrPeoPle[arrX[index]] == 1 && infection_P[arrX[index]] < k){
-            arrPeoPle[arrY[index]] = 1;
-            infection_P[arrX[index]]++;
+            if(arrPeoPle[arrY[index]] == 1){
+                infection_P[arrX[index]]++;
+                infection_P[arrY[index]]++;
+            }
+            else {
+                arrPeoPle[arrY[index]] = 1;
+                infection_P[arrX[index]]++;
+            }
         }
         else if(arrPeoPle[arrY[index]] == 1 && infection_P[arrY[index]] < k){
-            arrPeoPle[arrX[index]] = 1;
-            infection_P[arrY[index]]++;
+            if(arrPeoPle[arrX[index]] == 1){
+                infection_P[arrX[index]]++;
+                infection_P[arrY[index]]++;
+            }
+            else {
+                arrPeoPle[arrX[index]] = 1;
+                infection_P[arrY[index]]++;
+            }
         }
-        
+
         index = 1;
     }
 
