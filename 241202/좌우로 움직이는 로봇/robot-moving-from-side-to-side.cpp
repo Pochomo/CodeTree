@@ -17,8 +17,8 @@ void check(int full_time) {
         else if(arrA[i] != arrB[i]){
             double_check = 1;
         }
-
     }
+
     cout << cnt;
 }
 
@@ -79,21 +79,12 @@ int main() {
     }
 
     for(int i = full_time; i < 1000000; i++){
-        arrB[i] = arrA[full_time];
+        arrB[i] = arrB[full_time];
     }
 
     max_N = max(max_N, full_time);
 
     check(max_N);
-
-
-        // for(int i = 0; i <= max_N; i++){
-        //     cout << arrA[i] << " ";
-        // }
-        // cout << endl;
-        // for(int i = 0; i <= max_N; i++){
-        //     cout << arrB[i] << " ";
-        // }
 
     return 0;
 }
