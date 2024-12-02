@@ -3,12 +3,12 @@
 
 using namespace std;
 
-int arrPeoPle[100];
-
+int arrPeoPle[101];
+int infection_P[101] = {0};
 
 int main() {
     int n, k, p, T; //n명의 개발자 t번에 걸처 t초에, x개발자가 y개발자와 악수를 나눈 정황이 주어진다.
-    //1명의 개발자 감염, k번의 악수 동안만 전염병을 옮기고 그 이후 옮기진 x
+    //1명의 개발자 감염, "한명의 개발자가" k번의 악수 동안만 전염병을 옮기고 그 이후 옮기진 x
     //p -> 처음 전염병이 걸린 개발자, 
     //전염된 사람끼리 만나도 전염시킨 것으로 간주해야함. (감염횟수에만 포함)
     cin >> n >> k >> p >> T;
@@ -23,7 +23,7 @@ int main() {
     int *arrX = new int[T+1];
     int *arrY = new int[T+1];
  
-    int cnt = 0; //k번동안 감염됐는지 체크
+    int cnt = 1; //k번동안 감염됐는지 체크
     for(int i = 1; i <= T; i++){
         cin >> t >> x >> y; //t초에 x개발자와 y개발자가 악수를 나눴음. //k 번동안 감염됨을 유의 ??
         temp_time_arr[i] = t;
@@ -39,22 +39,17 @@ int main() {
         while(temp_time_arr[i] != time_arr[index]){ //index가 몇인지 알아내서 time 제일 먼저인거 찾아옴
             ++index;
         }
+        
         //index 맞게 출력되는거 확인
-        if(cnt < k){
-            if(arrPeoPle[arrX[index]] == 1 && arrPeoPle[arrY[index]] == 1){
-                cnt++;
-            }
-            else if(arrPeoPle[arrX[index]] == 1 || arrPeoPle[arrY[index]] == 1){
-                if(arrPeoPle[arrX[index]] == 1){
-                    arrPeoPle[arrY[index]] = 1;
-                }
-                else if(arrPeoPle[arrY[index]] == 1){
-                    arrPeoPle[arrX[index]] = 1;
-                }
-                cnt++;
-            }
+        if(arrPeoPle[arrX[index]] == 1 && infection_P[arrX[index]] < k){
+            arrPeoPle[arrY[index]] = 1;
+            infection_P[arrX[index]]++;
         }
-
+        else if(arrPeoPle[arrY[index]] == 1 && infection_P[arrY[index]] < k){
+            arrPeoPle[arrX[index]] = 1;
+            infection_P[arrY[index]]++;
+        }
+        
         index = 1;
     }
 
