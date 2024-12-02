@@ -8,7 +8,19 @@ int arrB[1000001];
 void check(int full_time) {
     // 10 11에 겹치는 경우, 13일때 a는 0(이전위치가)이고 b는 3임
     int cnt = 0;
-    
+    //겹치는 지점을 따질 필요가 없음
+    //  int double_check = 1; // 연속으로 겹치는 경우 차단     
+    // for(int i = 1; i <= full_time; i++) {         
+    //     if(arrA[i] == arrB[i] && double_check != 2){             
+    //         double_check = 2;             
+    //         cnt++;         
+    //     }         
+    //     else if(arrA[i] != arrB[i]){             
+    //         double_check = 1;         
+    //     }     
+    // } 
+    //처음에 위와같은 방법으로 생각했지만 1 1 2 3 3, 1 1 2 3 3 일때 세는 수가 다름
+    //연속으로 겹치는 경우 문제가 발생     
     for(int i = 1; i <= full_time; i++) {
         if(arrA[i] == arrB[i] && arrA[i-1] != arrB[i-1]){
             cnt++;
