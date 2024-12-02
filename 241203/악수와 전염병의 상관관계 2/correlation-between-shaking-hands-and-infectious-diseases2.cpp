@@ -40,15 +40,19 @@ int main() {
             ++index;
         }
         //index 맞게 출력되는거 확인
-
-        if(arrPeoPle[arrX[index]] == 1 || arrPeoPle[arrY[index]] == 1 && cnt != k){
-            if(arrPeoPle[arrX[index]] == 1){
-                arrPeoPle[arrY[index]] = 1;
+        if(cnt < k){
+            if(arrPeoPle[arrX[index]] == 1 && arrPeoPle[arrY[index]] == 1){
+                cnt++;
             }
-            else if(arrPeoPle[arrY[index]] == 1){
-                arrPeoPle[arrX[index]] = 1;
+            else if(arrPeoPle[arrX[index]] == 1 || arrPeoPle[arrY[index]] == 1){
+                if(arrPeoPle[arrX[index]] == 1){
+                    arrPeoPle[arrY[index]] = 1;
+                }
+                else if(arrPeoPle[arrY[index]] == 1){
+                    arrPeoPle[arrX[index]] = 1;
+                }
+                cnt++;
             }
-            cnt++;
         }
 
         index = 1;
