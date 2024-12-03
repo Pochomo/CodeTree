@@ -34,20 +34,24 @@ int main() {
     int cnt = 0;
     bool check = true;
     bool d_check = true;
+    bool b_check = true;
     for(int i = 1; i < time_t; i++){
         if(arrA[i] > arrB[i] && check == true){
             cnt ++;
+            b_check = true;
             check = false;
             d_check = true;
         }
-        else if(arrB[i] > arrA[i] && check == true){
+        else if(arrB[i] > arrA[i] && b_check == true){
             cnt ++;
-            check = false;
+            check = true;
+            b_check = false;
             d_check = true;
         }
         else if(arrA[i] == arrB[i] && d_check == true){
             d_check = false;
             check = true;
+            b_check = true;
             cnt ++;
         }
 
