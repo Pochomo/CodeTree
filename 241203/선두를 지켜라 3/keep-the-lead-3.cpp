@@ -1,8 +1,8 @@
 #include <iostream>
 using namespace std;
 
-int arrA[1000001] = {0};
-int arrB[1000001] = {0};
+int arrA[100000000] = {0};
+int arrB[100000000] = {0};
 
 int main() {
     int n, m;
