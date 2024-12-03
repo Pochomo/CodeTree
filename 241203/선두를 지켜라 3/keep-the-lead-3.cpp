@@ -30,7 +30,8 @@ int main() {
             index++; 
         }
     }
-
+    
+    //리더 1, 2, 3으로 표현하고 1이 아닐시 ++ , 2 아닐시 ++ 로 하면 더 직관적인 표현 가능
     int cnt = 0;
     bool check = true;
     bool d_check = true;
