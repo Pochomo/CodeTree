@@ -1,8 +1,8 @@
 #include <iostream>
 using namespace std;
 
-int arrA[100000000] = {0};
-int arrB[100000000] = {0};
+int arrA[1000001] = {0};
+int arrB[1000001] = {0};
 
 int main() {
     int n, m;
@@ -30,8 +30,7 @@ int main() {
         }
     }
     int cnt = 0;
-    //bool check = true;
-    for(int i = 0; i <= distance; i++){
+    for(int i = 0; i <= 1000000; i++){
         if((arrA[i] != arrB[i] && arrA[i - 1] == arrB[i - 1])){
             if(arrA[i - 1] == arrB[i - 1] && (i-1) != 0){
                 cnt = cnt + 1;
