@@ -19,22 +19,24 @@ int main() {
             arr[i][j] = num;
         }
     }
+
     int x;
     int y;
-    int cnt = 0;
     int fin_cnt = 0;
+    int index = 0;
     for(int dir_y = 0; dir_y < n; dir_y++){
-        x = 0, y = 0;
         for(int dir_x = 0; dir_x < n; dir_x++){
-            x = dir_x + dx[dir_x], y = dir_y + dy[dir_y];
-            if((inrange(x, y, n)) && arr[x][y] == 1){
-                cnt++;
+            int cnt = 0;
+            for(int index = 0; index < 4; index++){
+                x = dir_x + dx[index], y = dir_y + dy[index];
+                if((inrange(x, y, n)) && arr[x][y] == 1){
+                    cnt++;
+                }
             }
-        }
-        if(cnt > 2){
+            if(cnt > 2){
             fin_cnt++;
         }
-        cnt = 0;
+        }
     }
 
     cout << fin_cnt;
