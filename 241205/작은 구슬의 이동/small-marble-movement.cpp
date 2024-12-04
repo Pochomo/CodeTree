@@ -33,7 +33,6 @@ int main() {
         nx = x + dx[dir], ny = y + dy[dir];
         if(!inRange(nx, ny)){
             dir = 3 - dir;
-            nx = x + dx[dir], ny = y + dy[dir];
             continue;
         }
         x = nx;
