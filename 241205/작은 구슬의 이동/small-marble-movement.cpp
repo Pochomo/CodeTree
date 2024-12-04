@@ -40,6 +40,6 @@ int main() {
         y = ny;
     }
 
-    cout << nx << " " << ny;
+    cout << x << " " << y;
     return 0;
 }
