@@ -4,8 +4,8 @@ using namespace std;
 int dx[4] = {0, 1, 0, -1}, dy[4] = {1, 0, -1, 0};
 int arrA[100][100] = {0};
 
-bool InRange(int x, int y, int n) {
-    return (0 <= x && x < n && 0 <= y && y < n);
+bool InRange(int x, int y, int n, int m) {
+    return (0 <= x && x < n && 0 <= y && y < m);
 }
 
 int main() {
@@ -17,7 +17,7 @@ int main() {
     int nx = 0, ny = 0;
     for(int i = 1; i < n * m; i++){
         nx = x + dx[direction], ny = y + dy[direction];
-        if(!InRange(nx, ny, n) || arrA[nx][ny] != 0){
+        if(!InRange(nx, ny, n, m) || arrA[nx][ny] != 0){
             direction = (direction + 1) % 4;
         }
         x = x + dx[direction];
