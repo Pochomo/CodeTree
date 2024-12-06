@@ -33,6 +33,7 @@ int main() {
         if(x == 0 && y == 0){
             check = false;
             cout << cnt;
+            break;
         }
     }
 
