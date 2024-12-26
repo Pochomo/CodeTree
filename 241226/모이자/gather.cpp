@@ -26,6 +26,14 @@ int main() {
         }
         distance = 0;
     }
+//     int dis_min = INT_MAX;  // INT_MAX로 초기화 엄청 큰 숫자로 초기화 하면서 if(i==0) 쓸 필요 없어짐 필수 ! 
+//     for(int i = 0; i < n; i++){
+//          int distance = 0;
+//         for(int j = 0; j < n; j++){
+//             distance += arrA[j] * abs(j - i);
+//     }
+//     dis_min = min(dis_min, distance);  // min 함수 사용
+// }
 
     cout << dis_min;
 
