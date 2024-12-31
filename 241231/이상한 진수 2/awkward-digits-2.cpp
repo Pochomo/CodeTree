@@ -3,7 +3,6 @@
 #include <string>
 using namespace std;
 
-
 int main() {
     string a;
     cin >> a;
@@ -12,14 +11,12 @@ int main() {
     int s_length = (int)a.size();
     int cnt = 0;
     for(int i = 0; i < s_length; i++){
-        for(int j = 0; j < s_length; j++){
-            if(a[j] == '0'){
-                a[j] = '1';
-                cnt++;
-                break;
-            }
+        if(a[i] == '0'){
+            a[i] = '1';
+            cnt++;
+            break;
         }
-        if(cnt != 1){
+        if(cnt == 0 && i == (s_length-1)){
             if(a[s_length - 1] == '0'){
                 a[s_length - 1] = '1';
             }
@@ -30,7 +27,7 @@ int main() {
     }
 
     int b = stoi(a);
-
+    
     while(b > 0){
         num = num + (b % 10) * temp;
         b = b / 10;
