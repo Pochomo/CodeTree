@@ -17,10 +17,13 @@ int main() {
     // }
 
     for(int i = 0; i < s_length; i++){
-        if(a[i] == '0'){
-            a[i] = '1';
-            break;
+        for(int i = 0; i < s_length; i++){
+            if(a[i] == '0'){
+                a[i] = '1';
+                break;
+            }
         }
+        a[s_length - 1] = '0';
     }
 
     int b = stoi(a);
