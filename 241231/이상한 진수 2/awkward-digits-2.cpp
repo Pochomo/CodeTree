@@ -3,7 +3,6 @@
 #include <string>
 using namespace std;
 
-//int arrA[10];
 
 int main() {
     string a;
@@ -11,19 +10,23 @@ int main() {
     int num = 0;
     int temp = 1;
     int s_length = (int)a.size();
-
-    // for(int i = 0; i < s_length; i++) {
-    //     arrA[i] = a[i] - '0';
-    // }
-
+    int cnt = 0;
     for(int i = 0; i < s_length; i++){
-        for(int i = 0; i < s_length; i++){
-            if(a[i] == '0'){
-                a[i] = '1';
+        for(int j = 0; j < s_length; j++){
+            if(a[j] == '0'){
+                a[j] = '1';
+                cnt++;
                 break;
             }
         }
-        a[s_length - 1] = '0';
+        if(cnt != 1){
+            if(a[s_length - 1] == '0'){
+                a[s_length - 1] = '1';
+            }
+            else if(a[s_length - 1] == '1'){
+                a[s_length - 1] = '0';
+            }
+        }
     }
 
     int b = stoi(a);
