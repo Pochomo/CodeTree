@@ -24,7 +24,7 @@ int main() {
                 cnt = 1;
             }
             if(j != i){
-                distance += (abs(x[j-cnt] - x[j+1+cnt]) + abs(y[j-cnt] - y[j+1+cnt]));
+                distance += (abs(x[j] - x[j+1+cnt]) + abs(y[j] - y[j+1+cnt]));
                 cnt = 0;
             }
         }
