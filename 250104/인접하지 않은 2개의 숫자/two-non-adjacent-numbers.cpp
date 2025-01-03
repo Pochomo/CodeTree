@@ -18,12 +18,12 @@ int main() {
             if(j < n){
                 temp = (numbers[i] + numbers[j]);
             }
-        }
-        ans = max(temp, ans);
-        temp = 0;
+            ans = max(temp, ans);
+            temp = 0;
+        } 
     }
 
     cout << ans;
-    
+
     return 0;
 }
