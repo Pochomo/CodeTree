@@ -9,8 +9,8 @@ int dy[8] = {-1, 0, 1, -1, 0, 1, -1, 1};
 
 string arr[50];
 
-bool inrange(int i, int j){
-    return i < 50 && j < 50 && i >= 0 && j >= 0;
+bool inrange(int i, int j, int n, int m){
+    return i < n && j < m && i >= 0 && j >= 0;
 }
 
 int main () {
@@ -28,13 +28,14 @@ int main () {
             int cnt = 0;
             int cntX = i;
             int cntY = j;
-            if(arr[i][j] = 'L'){
+            if(arr[i][j] == 'L'){
                 cnt = 1;
                 //L 주위에 E 있나 탐색, 있으면 한번 더 E 있나 탐색 후 다시 제자리,
                 for(int k = 0; k < 8; k++){
+                    cnt = 1;
                     nx = cntX + dx[k];
                     ny = cntY + dy[k];
-                    if(!inrange(nx, ny)){
+                    if(!inrange(nx, ny, N, M)){
                         cnt = 0;
                         nx = cntX;
                         ny = cntY;
@@ -46,7 +47,7 @@ int main () {
                         nx += dx[k];
                         ny += dy[k];
                         //같은 방향으로 다음이 E인지 확인
-                        if(inrange(nx, ny) && arr[nx][ny] == 'E'){
+                        if(inrange(nx, ny, N, M) && arr[nx][ny] == 'E'){
                             cnt ++;
                         }
                     }
