@@ -15,11 +15,9 @@ bool isoverlap(int i, int j, int z, int k){
             if(i == z && j + m == k + n){
                 return true;
             }
-            else{
-                return false;
-            }
         }
     }
+    return false;
 }
 
 int main() {
