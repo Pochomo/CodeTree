@@ -23,8 +23,8 @@ int main() {
                 }
                 num += arr[z];
             }
-            num -= S;
-            ans = min(ans, num);
+            int diff = abs(num - S);
+            ans = min(ans, diff);
         }
     }
 
