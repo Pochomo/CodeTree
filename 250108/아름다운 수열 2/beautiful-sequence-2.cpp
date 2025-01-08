@@ -19,6 +19,7 @@ int main() {
     int cIndex;
     //M개씩 묶어서 비교
     for (int i = 0; i <= N-M; i++){
+        //bool used[100] = {true}; //사용한 부분은 또 사용해서는 안된다. 이렇게 하면 첫번째 부분만 true가 됨
         bool used[100] = {false};
         correct = 0;
         index = 0;
@@ -40,3 +41,6 @@ int main() {
 
     return 0;
 }
+
+//답지는 정렬을 활용함, 지금 생각하니 정렬을 활용하는게 훨씬 쉬움
+//두개 배열을 서로 정렬해서 같으면 같은거임
