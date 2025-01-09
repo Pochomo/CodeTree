@@ -6,7 +6,7 @@ using namespace std;
 int N, K;
 int candy[100];
 int pos[100] = {0}; 
-int totalCandy[100] = {0};
+int totalCandy[401] = {0};
 
 int main() {
     cin >> N >> K;
@@ -27,10 +27,9 @@ int main() {
         index++; 
     }
     
-    // c = 3 K = 3 일때  
     int c = K; ///중심점
     int ans = INT_MIN;
-    for (int i = c-K; i <= 100-2*K; i++){
+    for (int i = c-K; i <= 400-2*K; i++){
         int sum = 0;
         for (int j = i; j <= c+K; j++){
             sum += totalCandy[j];
