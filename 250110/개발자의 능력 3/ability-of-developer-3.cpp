@@ -7,12 +7,10 @@ using namespace std;
 int abilities[6];
 int total = 0;
 
-int getDiff(int a, int b){
+int getDiff(int a, int b, int c){
     int sum1 = 0;
     int sum2 = 0;
-    for(int i = a; i <= b; i++){
-        sum1 += abilities[i];
-    }
+    sum1 = abilities[a] + abilities[b] + abilities[c];
     sum2 = total - sum1;
 
     return abs(sum1-sum2);
@@ -23,13 +21,15 @@ int main() {
         cin >> abilities[i];
         total += abilities[i];
     }
-    
+
     int ans = INT_MAX;
     int diff = 0;
     for(int i = 0; i < 4; i++){
-        for(int j = i+2; j < 6; j++){
-            diff = getDiff(i, j); 
-            ans = min(ans, diff);
+        for(int j = i+1; j < 5; j++){
+            for(int k = j+1; k < 6; k++){
+                diff = getDiff(i, j, k); 
+                ans = min(ans, diff);
+            }
         }
     }
 
