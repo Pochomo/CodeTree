@@ -24,14 +24,13 @@ int main() {
         for(int j = 1; j <= 9; j++){
             if(i == j) continue;
             for(int k = 1; k <= 9; k++){
-                if(j == k) continue;
+                if(j == k || i == k) continue;
                 int correct = 0;
                 int index = 0;
                 while(index != n){
                     int cnt1 = 0;
                     int cnt2 = 0;
                     int num = a[index];
-
                     int a100 = num/100;
                     int a10 = (num/10)%10;
                     int a1 = num%10;
