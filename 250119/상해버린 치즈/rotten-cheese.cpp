@@ -42,9 +42,11 @@ int main() {
     sort(infection, infection + index);
 
     for (int i = 0; i < index; i++) {
+        bool counted[51] = {false};
         int cnt = 0;
         for (int j = 0; j < D; j++) {
-            if(infection[i] == m[j]){
+            if(infection[i] == m[j] && !counted[p[j]]){
+                counted[p[j]] = true;
                 cnt++;
             }
         }
