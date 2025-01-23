@@ -19,41 +19,37 @@ int main() {
         cin >> P[i] >> S[i];
     }
 
-    for (int i = 0; i < N; i++) {
-        total[i] = P[i] + S[i];
-    }
-
-    for (int i = 0; i < N; i++) {
-        sales_total[i] = P[i] / 2 + S[i];
-    }
 
     sort(total, total + N);
-    sort(sales_total, sales_total + N);
 
 
     int ans = INT_MIN;
-    for (int i = 0; i < N; i++) { //할인 받을 학생 선물
-        for (int j = 0; j < N; j++) {
-            int budget = B;
-            int cnt = 0;
-            for (int k = 0; k < N; k++) {
-                if(i == k) {
-                    int price = sales_total[i];
-                    if(budget >= (price)) {
-                        budget -= (price);
-                        cnt++;
-                    }
-                } 
-                else {
-                    if(budget >= (total[k])) {
-                        budget -= (total[k]);
-                        cnt++;
-                    }
-                }
+    for(int i = 0; i < N; i++) { // 할인 받을 학생
+        // 현재 학생 제외하고 나머지 total 배열 만들기
+        int idx = 0;
+        for(int j = 0; j < N; j++) {
+            if(i != j) total[idx++] = P[j] + S[j];
+        } 
+        sort(total, total + idx);
+       
+        int budget = B;
+        int cnt = 0;
+       
+        // 할인 받는 학생 먼저 처리
+        if(budget >= P[i]/2 + S[i]) {
+            budget -= P[i]/2 + S[i];
+            cnt++;
+        }
+       
+        // 나머지 학생들 처리
+        for(int j = 0; j < idx; j++) {
+            if(budget >= total[j]) {
+                budget -= total[j];
+                cnt++;
             }
-            ans = max(ans, cnt);
+        }
+        ans = max(ans, cnt);
     }
-}
 
     cout << ans;
 
