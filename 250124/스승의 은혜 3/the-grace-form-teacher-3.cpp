@@ -1,13 +1,16 @@
 #include <iostream>
 #include <climits>
-
+#include <algorithm>
 using namespace std;
 
 int N, B;
 int P[1000];
 int S[1000];
+int total[1000];
+int sales_total[1000];
 
 //N명의 학생에게 B만큼의 예산으로 선물
+
 int main() {
     cin >> N >> B;
     //학생 i가 원하는 선물의 가격 P[i] 배송비 S[i] 하나를 정해서 반 값 할인 가능
@@ -16,35 +19,41 @@ int main() {
         cin >> P[i] >> S[i];
     }
 
+    for (int i = 0; i < N; i++) {
+        total[i] = P[i] + S[i];
+    }
+
+    for (int i = 0; i < N; i++) {
+        sales_total[i] = P[i] / 2 + S[i];
+    }
+
+    sort(total, total + N);
+    sort(sales_total, sales_total + N);
+
+
     int ans = INT_MIN;
-    for (int i = 0; i < N; i++) { //반 값 할인 할 선물
-        for (int j = 0; j < N; j++) { //시작점
+    for (int i = 0; i < N; i++) { //할인 받을 학생 선물
+        for (int j = 0; j < N; j++) {
             int budget = B;
             int cnt = 0;
-            for (int k = j; k < N; k++) { //가격 넘으면 continue로 해서 모든 경우 다 셀 수 잇도록
-                int price = P[i] / 2;
-                if(i == k){
-                    if(budget >= (price + S[k])){
-                        budget -= (price + S[k]);
-                        cnt++; 
-                    }
-                    else{
-                        continue;
-                    }
-                }
-                else{
-                    if(budget >= (P[k] + S[k])){
-                        budget -= (P[k] + S[k]);
+            for (int k = 0; k < N; k++) {
+                if(i == k) {
+                    int price = sales_total[i] / 2; 
+                    if(budget >= (price)) {
+                        budget -= (price);
                         cnt++;
                     }
-                    else{
-                        continue;
+                } 
+                else {
+                    if(budget >= (total[k])) {
+                        budget -= (total[k]);
+                        cnt++;
                     }
                 }
             }
             ans = max(ans, cnt);
-        }
     }
+}
 
     cout << ans;
 
