@@ -38,7 +38,7 @@ int main() {
             int cnt = 0;
             for (int k = 0; k < N; k++) {
                 if(i == k) {
-                    int price = sales_total[i] / 2; 
+                    int price = sales_total[i];
                     if(budget >= (price)) {
                         budget -= (price);
                         cnt++;
