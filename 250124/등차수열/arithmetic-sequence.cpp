@@ -25,19 +25,20 @@ int main() {
     //k를 맞게 설정하고 양 옆 숫자 a[i]에서 선정
     //k는 무조건 중간값
     //a[i]를 정렬하고 하나씩 골라서 그 사이에 값을 넣어서 등비인지 확인
-    sort(a, a + n);
-
-    int cnt = 0;
-    for(int j = 0; j < n; j++){
-        for(int k = j+1; k < n; k++){
-            for(int i = minN; i < maxN; i++){ //k가 될 수 있는 숫자들
+    
+    int ans = INT_MIN;
+    for(int i = minN; i < maxN; i++){ //k가 될 수 있는 숫자들
+        int cnt = 0;
+        for(int j = 0; j < n; j++){
+            for(int k = j+1; k < n; k++){        
                 if(abs(a[j] - i) == abs(a[k] - i)){
                     cnt++;
                 }
-            }
+            } 
         }
+        ans = max(ans, cnt);
     }
 
-    cout << cnt;
+    cout << ans;
     return 0;
 }
