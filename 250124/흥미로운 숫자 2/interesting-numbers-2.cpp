@@ -15,7 +15,7 @@ int main() {
     
     bool isInteresting = false;
     for(int j = 0; j < num.length(); j++) {
-        char base = num[j];  // 각 자리 숫자를 기준으로 시도
+        char base = num[j];
         int diffCount = 0;
         
         for(int k = 0; k < num.length(); k++) {
@@ -24,7 +24,7 @@ int main() {
             }
         }
         
-        if(diffCount == 1) {  //한 자리만 다르면 흥미로운 수
+        if(diffCount == 1) {
             isInteresting = true;
             break;
         }
