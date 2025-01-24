@@ -24,7 +24,7 @@ int main() {
     }
     //2는 S기준 d1 = 1 N기준 d2 = 3이라 거리가 작거나 같으므로 맞음
     for (int j = a; j <= b; j++) {
-        int d1 = INT_MAX;
+        int d1 = INT_MAX; //INT_MAX + 1은 오버플로우 발생
         int d2 = INT_MAX;
         for (int i = 0; i < T; i++) {
             if(c[i] == 'S') {
