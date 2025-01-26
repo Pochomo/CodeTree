@@ -14,7 +14,7 @@ int main() {
     for(int i = 0; i <= ableNum1; i++){
         for(int j = 0; j <= ableNum2; j++){ //곱하는 숫자
             int num = ((A * i)+(B * j));
-            if(num < C){
+            if(num <= C){
                 ans = max(num, ans);
             }
         }
