@@ -30,21 +30,24 @@ int main() {
     //연속부분문자열로서 두 번 이상 나타나지 않는 문자열의 최소 길이
     //ABCDABC 는 ABC는 2번씩 있으니 답은 4
     int ans = N;
-    bool found = false;
-    for(int i = 0; i < N; i++){
-        int cnt = 0;
-        for(int k = i; k < N; k++){
+    for (int len = 1; len <= N; len++) {
+        bool found = true;
+        for (int i = 0; i <= N - len; i++) {
             string temp;
-            for(int j = i; j <= k; j++){
-                temp += string(1, str[j]);
+            for (int j = i; j < i + len; j++) {
+                temp += str[j];
             }
-            if (!check(temp)) {
-                if((int)temp.length() < ans) {
-                    ans = temp.length();
-                    i = N;
-                    break;
-                }
+            if(!check(temp)) {
+                found = false;
             }
+            if(check(temp)) {
+                found = true;
+                break;
+            }
+        }
+        if(!found) {
+            ans = len;
+            break;
         }
     }
 
