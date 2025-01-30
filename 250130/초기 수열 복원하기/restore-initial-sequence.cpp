@@ -21,7 +21,7 @@ int main() {
         for (int i = 2; i < n + 1; i++) { //elements 정하는 loop
             for(int j = 1; j <= n; j++){
                 elements[i] = j;
-                if(elements[i] = adjacent[i - 1] - elements[i - 1]){
+                if(elements[i] ==(adjacent[i - 1] - elements[i - 1])){
                     valid = true;
                     break; //맞는 값 찾음
                 }
