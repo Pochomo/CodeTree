@@ -11,8 +11,8 @@ int main() {
 
     //같은 정수가 부여된 폭탄끼리 k안에있으면 폭발한다.
     //폭탄의 개수 n, 특정 거리인 K, 부여된 정수순으로 주어짐, 폭발한 폭탄 중 가장많이 터진 폭탄의 정수는?
-    int count[100] = {};
-    bool checked[100] = {};
+    int count[1000000] = {};
+    bool checked[1000000] = {};
     for (int i = 0; i < N; i++) {
         cin >> num[i];
         count[num[i]]++; //ex 2가 몇번 등장했는지
@@ -36,7 +36,7 @@ int main() {
                 }
             }
         }
-        
+
         checked[num[i]] = true;
 
         if(cnt > maxExplodes) {
