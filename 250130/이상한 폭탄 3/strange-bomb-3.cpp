@@ -24,14 +24,13 @@ int main() {
     //count가 2 이상인 경우만 체크(index가 그 정수의 번호임) 
     for (int i = 0; i < N; i++) {
         int cnt = 0;
-        if(count[num[i]] <= 2) continue;
+        if(count[num[i]] < 2) continue;
         if(checked[num[i]] == true) continue;
         for (int j = 0; j < N; j++) {
             for (int k = j+1; k < N; k++) {
                 if(num[j] == num[i] && num[k] == num[i]){
                     if(k - j <= K){
                         cnt++;
-                        break;
                     }
                 }
             }
