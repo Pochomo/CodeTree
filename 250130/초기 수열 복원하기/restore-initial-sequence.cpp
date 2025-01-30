@@ -14,19 +14,31 @@ int main() {
     for (int i = 1; i < n; i++) {
         cin >> adjacent[i];
     }
-    
-    elements[1] = adjacent[1] - 1;
-    for (int i = 2; i < n + 1; i++) { //elements 정하는 loop
-        for (int j = 1; j <= n; j++) { 
-            if(elements[i-1] + j == adjacent[i-1]){
+
+    for (int first = n; first >= 1; first--) {
+        elements[1] = first;
+        bool valid = false;
+        for (int i = 2; i < n + 1; i++) { //elements 정하는 loop
+            for(int j = 1; j <= n; j++){
                 elements[i] = j;
+                if(elements[i] = adjacent[i - 1] - elements[i - 1]){
+                    valid = true;
+                    break; //맞는 값 찾음
+                }
+                else{
+                    valid = false;
+                }
+            }
+            if(!valid){ //맞는 값을 끝까지 못찾음 fisrt 값을 새로 받음
                 break;
             }
         }
+        if(valid) break;
     }
 
     for (int i = 1; i < n + 1; i++) {
         cout << elements[i] << " ";
     }
+
     return 0;
 }
