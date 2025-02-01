@@ -5,16 +5,18 @@ using namespace std;
 
 int n;
 int x1[100], x2[100];
-int max_x1;
-int min_x2 =  INT_MAX;
-bool overlapped(int exclude){
-    for(int i = 0; i < n; i++){
-        if(exclude == i) continue;
-        max_x1 = max(max_x1, x1[i]);
-        min_x2 = min(min_x2, x2[i]);
-        if(min_x2 >= max_x1) return true;
-        else return false;
+
+bool overlapped(int exclude) {
+    int cur_max_x1 = 0;
+    int cur_min_x2 = INT_MAX;
+    
+    for (int i = 0; i < n; i++) {
+        if (i == exclude) continue;
+        cur_max_x1 = max(cur_max_x1, x1[i]);
+        cur_min_x2 = min(cur_min_x2, x2[i]);
     }
+    
+    return cur_min_x2 >= cur_max_x1;
 }
 
 int main() {
