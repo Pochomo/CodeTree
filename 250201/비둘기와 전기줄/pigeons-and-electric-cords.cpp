@@ -17,7 +17,6 @@ int main() {
     int cnt = 0;
     for (int num = 1; num <= 10; num++){ //1에서 0 or 0에서 1로 바뀌면 cnt++
         int prev = -1;
-        int current = -1;
         for(int i = 0; i < N; i++){
             if(pigeon[i] == num && prev == -1){ //처음 발견됐을 때
                 prev = position[i];
