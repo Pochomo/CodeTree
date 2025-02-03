@@ -6,7 +6,7 @@ int n, m, p;
 char c[100];
 int u[100];
 char people[26];
-bool nonread[26];
+bool read[26];
 int main() {
     cin >> n >> m >> p;
 
@@ -25,14 +25,22 @@ int main() {
     //두번째 줄부터, m개의 줄에 걸쳐 메세지 정보c, u가 공백을 사이에 두고 주어짐, 사람 c가 올린 메시지,
     //아직 메시지를 읽지 않은 사람 수 가 u
 
-    //읽으면 true로(메시지를 보내면 읽은것으로 간주)
-    for (int i = p-1; i < m; i++) {
-        nonread[c[i] - 'A'] = true;
+    //p의 숫자에 따라 몇명인지 정해짐, u[i] == 0 일때 빼곤 같거나 커야함
+    int nreadPeople = u[p-1];
+    for(int i = 0; i < n; i++){ //답이 될 수 있는 모든 경우의 수 탐색, 확실히 읽은 사람이면 nonread = true로 변환
+        if(nreadPeople == 0) break; //다 읽음
+        for (int j = p-1; j < m; j++) {
+            if(people[i] == c[j]) {
+                read[people[i] - 'A'] = true;
+                break;
+            }
+        }
     }
-
+    
     for(int i = 0; i < n; i++){
-        if(!nonread[i]) cout << people[i] << " ";
+        if(nreadPeople > 0 && !read[i]) cout << people[i] << " ";
     }
-
+    
+    
     return 0;
 }
