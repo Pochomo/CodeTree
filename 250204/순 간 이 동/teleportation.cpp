@@ -13,7 +13,7 @@ int main() {
     //이것을 효율적으로 이용하여 걷는 거리 최소한으로 하는 프로그램
     
     int ans = INT_MAX;
-    for(int i = 0; i < 2; i++){
+    for(int i = 0; i < 3; i++){
         int distance = 0;
         if(i == 0){
             distance += abs(a - x);
@@ -25,9 +25,13 @@ int main() {
             distance += abs(x - b);
             ans = min(ans, distance);
         }
+        else if(i == 2){
+            distance += abs(a - b);
+            ans = min(ans, distance);
+        }
     }
 
     cout << ans;
-    
+
     return 0;
 }
