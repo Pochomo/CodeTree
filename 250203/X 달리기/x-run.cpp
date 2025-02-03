@@ -1,4 +1,5 @@
 #include <iostream>
+#include <climits>
 
 using namespace std;
 
@@ -12,28 +13,21 @@ int main() {
     //최단 시간구하는 프로그램 도중 0이 되서는 x
     //최소로 할라면 증가 감소가 일정해야됨 6이면 2 3 증가 3 2 감소 1 2 3 2 1 1
     //11 이면 1 2 3 2 2 1
-    //실제 이동거리가 X 이상이면 중간에 알아서 감소해서 갈 수 있다는 뜻
-    int times = 0;
-    bool clear = false;
-    for(int i = 1; i <= 10000; i++){ //가능한 시간 범위 일정하게 유지해서 쭉 진행했을 때 i = sec임
-        int speed = 1;
-        int distance = 1;
-        for (int j = 1; j <= i; j++) {
-            if (j <= (i + 1) / 2) {
-                speed = j;
-            } else {
-                speed = i + 1 - j;
+    //12 면 1 2 3 3 2 1
+    //13 이면 1 2 3 2 2 2 1
+    int ans = INT_MAX;
+    for (int k = 1; k <= X; k++) { //최대속도
+        for (int p = 0; p <= X; p++) { //유지시간
+            int time = 2 * k - 1 + p;
+            int distance = k * k + p * k;
+            if (distance >= X) {
+                ans = min(ans, time);
+                break;
             }
-            distance += speed;
-        }
-        if(distance == X && speed == 1) {
-            clear = true;
-            times = i + 1;
-            break;
         }
     }
 
-    if(clear) cout << times;
+    cout << ans;
 
     return 0;
 }
