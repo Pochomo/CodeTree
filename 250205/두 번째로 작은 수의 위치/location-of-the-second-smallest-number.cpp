@@ -13,7 +13,7 @@ int main() {
         b[i] = a[i];
     }
 
-    sort(b, b + n);
+    sort(b, b + n + 1);
 
     //두번쨰로 작은원소 2개나 없으면 -1출력
     int cnt = 0;
