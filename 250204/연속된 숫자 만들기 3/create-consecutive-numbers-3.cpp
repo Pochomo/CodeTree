@@ -12,18 +12,11 @@ int main() {
     for(int i = 0; i < n; i++)
         cin >> a[i];
 
-    sort(a, a + n);
+    int diff1 = a[1] - a[0];
+    int diff2 = a[2] - a[1];
 
-    if(a[0] + 1 == a[1] && a[1] + 1 == a[2])
-        cout << 0;
-
-    else if(a[0] + 2 == a[1] && a[1] + 1 == a[2] || a[1] + 2 == a[2] && a[0] + 1 == a[1])
-        cout << 1;
-
-    else if(a[0] + 2 == a[1] || a[1] + 2 == a[2])
-        cout << 2;
-    else
-        cout << 3;
-        
+    int ans = max(diff1, diff2) - 1;
+    
+    cout << ans;
     return 0;
 }
