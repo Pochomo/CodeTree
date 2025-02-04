@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
@@ -7,6 +8,7 @@ int pos[3];
 int main() {
     for (int i = 0; i < 3; i++) cin >> pos[i];
 
+    sort(pos, pos + 3);
     //정렬돼있으면 0번
     //끝자리 하나만 연속되지않으면 1번
     //모두 연속되지 않으면 2번
@@ -24,7 +26,7 @@ int main() {
 
     cnt = 0;
     for(int i = 0; i < 2; i++){
-        if(pos[i+1] - pos[i] == 1) cnt++;
+        if(abs(pos[i+1] - pos[i]) == 1) cnt++;
         if(cnt == 2){
             cout << 0;
             return 0; 
