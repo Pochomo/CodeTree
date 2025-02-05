@@ -1,5 +1,6 @@
 #include <iostream>
 #include <climits>
+#include <string>
 
 using namespace std;
 
@@ -18,8 +19,8 @@ int main() {
     int score_B = 0;
     int score_C = 0;
     int cnt = 0;
-    char king = 'N';
-    int max_num = INT_MIN; 
+    string king = "ABC";
+    int max_num = 0; 
     for (int i = 0; i < n; i++) {
         if (c[i] == 'A') {
             score_A += s[i];
@@ -29,21 +30,22 @@ int main() {
             score_C  += s[i];
         }
         
-        char new_king;
-        if (score_A > max_num) {
-            new_king = 'A';
-        } else if (score_B > max_num) {
-            new_king = 'B';
-        }  else if (score_C > max_num) {
-            new_king = 'C';
-        }
-        else {
-            new_king = 'N';
-        }
-        
-        max_num = max(max(score_A, score_B), max_num);
-        max_num = max(score_C, max_num);
-        
+        string new_king;
+        if (score_A == score_B && score_B == score_C) {
+            new_king = "ABC";
+        } else if (score_A == score_B && score_B > score_C) {
+            new_king = "AB";
+        } else if (score_B == score_C && score_B > score_A) {
+            new_king = "BC";
+        } else if (score_C == score_A && score_C > score_B) {
+            new_king = "CA";
+        } else if (score_A > score_B && score_A > score_C) {
+            new_king = "A";
+        } else if (score_B > score_A && score_B > score_C) {
+            new_king = "B";
+        } else if (score_C > score_B && score_C > score_A) {
+            new_king = "C";
+        } 
         if (new_king != king) {
             cnt++;
             king = new_king;
