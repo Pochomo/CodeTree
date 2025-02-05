@@ -1,74 +1,53 @@
 #include <iostream>
+#include <cstdlib>
+#include <string>
+#include <algorithm>
+
+#define MAX_N 10
 
 using namespace std;
 
-char board[10][10];
-int location_L_x, location_L_y, location_B_x, location_B_y;
+int n = 10;
+
+string board[MAX_N];
 
 int main() {
-    for (int i = 0; i < 10; i++) {
-        for (int j = 0; j < 10; j++) {
-            cin >> board[i][j];
-            if (board[i][j] == 'L') {
-                location_L_x = j;
-                location_L_y = i;
-            } else if (board[i][j] == 'B') {
-                location_B_x = j;
-                location_B_y = i;
+    for(int i = 0; i < n; i++)
+        cin >> board[i];
+    
+    int l_x = 0, l_y = 0, r_x = 0, r_y = 0, b_x = 0, b_y = 0;
+    
+    for(int i = 0; i < n; i++)
+        for(int j = 0; j < n; j++) {
+            if(board[i][j] == 'L') {
+                l_x = i; l_y = j;
+            }
+            if(board[i][j] == 'R') {
+                r_x = i; r_y = j;
+            }
+            if(board[i][j] == 'B') {
+                b_x = i; b_y = j;
             }
         }
+    
+
+    if(l_x != b_x && l_y != b_y) {
+        cout << abs(l_x - b_x) + abs(l_y - b_y) - 1;
     }
 
-    int distance = abs(location_L_x - location_B_x) + abs(location_L_y - location_B_y) - 1;
-    bool obstacle = false;
-
-    if (location_L_y == location_B_y) {
-        int min_x = min(location_L_x, location_B_x);
-        int max_x = max(location_L_x, location_B_x);
-
-        for (int x = min_x + 1; x < max_x; x++) {
-            if (board[location_L_y][x] == 'R') {
-                obstacle = true;
-                break;
-            }
-        }
-    }
-    else if (location_L_x == location_B_x) {
-        int min_y = min(location_L_y, location_B_y);
-        int max_y = max(location_L_y, location_B_y);
-
-        for (int y = min_y + 1; y < max_y; y++) {
-            if (board[y][location_L_x] == 'R') {
-                obstacle = true;
-                break;
-            }
-        }
-    }
-    else {
-        int min_x = min(location_L_x, location_B_x);
-        int max_x = max(location_L_x, location_B_x);
-        int min_y = min(location_L_y, location_B_y);
-        int max_y = max(location_L_y, location_B_y);
-
-        for (int x = min_x + 1; x < max_x; x++) {
-            if (board[min_y][x] == 'R' || board[max_y][x] == 'R') {
-                obstacle = true;
-                break;
-            }
-        }
-        for (int y = min_y + 1; y < max_y; y++) {
-            if (board[y][min_x] == 'R' || board[y][max_x] == 'R') {
-                obstacle = true;
-                break;
-            }
-        }
+    else if(l_y == b_y) {
+        if(l_y == r_y && r_x >= min(b_x, l_x) && r_x <= max(b_x, l_x))
+            cout << abs(l_x - b_x) + abs(l_y - b_y) + 1;
+        else
+            cout << abs(l_x - b_x) + abs(l_y - b_y) - 1;
     }
 
-    if (obstacle) {
-        distance += 2;
+    else if(l_x == b_x) {
+        if(l_x == r_x && r_y >= min(b_y, l_y) && r_y <= max(b_y, l_y))
+            cout << abs(l_x - b_x) + abs(l_y - b_y) + 1;
+        else
+            cout << abs(l_x - b_x) + abs(l_y - b_y) - 1;
     }
-
-    cout << distance << endl;
 
     return 0;
 }
