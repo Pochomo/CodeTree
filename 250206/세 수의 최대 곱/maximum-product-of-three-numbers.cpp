@@ -41,22 +41,32 @@ int main() {
         ans = 0;
     }
 
+    //음수 1개 양수 2개
+    if(cnt_N >=1 && cnt_P >= 2) {
+        total_N *= negative[0];
+        for(int i = 0; i < 2; i++){
+            total_N *= positive[i];
+        }
+        ans = max(total_N, ans);
+    }
+    total_N = 1;
     //음수 0개 양수 3개
     if(cnt_P >= 3) {
         for(int i = 0; i < 3; i++){
             total_P *= positive[i];
         }
+        ans = max(total_P, ans);
     }
-    ans = max(total_P, ans);
+    
     //음수 2개 양수 1개
     if(cnt_N >= 2 && cnt_P >= 1) {
         total_N *= positive[0];
         for(int i = 0; i < 2; i++){
             total_N *= negative[i];
         }
+        ans = max(total_N, ans);
     }
-    ans = max(total_N, ans);
-
+    
     cout << ans;
 
     return 0;
