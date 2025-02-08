@@ -20,6 +20,17 @@ int main() {
     bool correct = false;
     int cnt = 0;
     while(true){
+
+        for(int i = 0; i < N; i++){
+            if(sorted_sequence[i] != sequence[i]){
+                correct = false;
+                break;
+            }
+            else correct = true;
+        }
+
+        if(correct) break;
+
         int temp = sequence[0];
         if(temp > sequence[N-1]){ //맨 뒤 숫자보다 크면 맨 뒤 숫자 뒤에 배치
             for(int i = 0; i < N-1; i++){
@@ -35,15 +46,6 @@ int main() {
             sequence[N-2] = temp;
             cnt++;
         }
-        for(int i = 0; i < N; i++){
-            if(sorted_sequence[i] != sequence[i]){
-                correct = false;
-                break;
-            }
-            else correct = true;
-        }
-
-        if(correct) break;
     }
 
     cout << cnt;
