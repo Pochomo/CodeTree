@@ -1,54 +1,21 @@
 #include <iostream>
-#include <algorithm>
-#include <climits>
+
+#define MAX_N 100
 
 using namespace std;
 
-int N;
-int sequence[100];
-int sorted_sequence[100];
+int n;
+int blocks[MAX_N];
 
 int main() {
-    cin >> N;
-    for (int i = 0; i < N; i++) {
-        cin >> sequence[i];
-        sorted_sequence[i] = sequence[i];
-    }
+    cin >> n;
+    for(int i = 0; i < n; i++)
+        cin >> blocks[i];
 
-    sort(sorted_sequence, sorted_sequence + N);
+    int idx = n - 2;
+    while(idx >= 0 && blocks[idx] < blocks[idx + 1])
+        idx--;
 
-    bool correct = false;
-    int cnt = 0;
-    while(true){
-
-        for(int i = 0; i < N; i++){
-            if(sorted_sequence[i] != sequence[i]){
-                correct = false;
-                break;
-            }
-            else correct = true;
-        }
-
-        if(correct) break;
-
-        int temp = sequence[0];
-        if(temp > sequence[N-1]){ //맨 뒤 숫자보다 크면 맨 뒤 숫자 뒤에 배치
-            for(int i = 0; i < N-1; i++){
-                sequence[i] = sequence[i+1];
-            }
-            sequence[N-1] = temp;
-            cnt++;
-        }
-        else if(temp < sequence[N-1]){ //맨 뒤 숫자보다 작으면 그 앞에 배치
-            for(int i = 0; i < N-2; i++){
-                sequence[i] = sequence[i+1];
-            }
-            sequence[N-2] = temp;
-            cnt++;
-        }
-    }
-
-    cout << cnt;
-
+    cout << idx + 1;
     return 0;
 }
