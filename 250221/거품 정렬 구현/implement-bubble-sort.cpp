@@ -5,7 +5,6 @@
 
 using namespace std;
 
-// 변수 선언
 int n;
 int arr[MAX_N];
 
@@ -25,7 +24,6 @@ void BubbleSort() {
 }
 
 int main() {
-    // 입력
     cin >> n;
 
     for(int i = 0; i < n; i++)
